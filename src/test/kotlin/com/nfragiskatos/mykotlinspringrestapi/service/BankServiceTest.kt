@@ -20,4 +20,18 @@ internal class BankServiceTest {
         // then
         verify (exactly = 1) { bankDataSource.retrieveBanks() }
     }
+
+    @Test
+    fun `should call its data soruce to retrieve bank given an account number`() {
+
+        // given
+        val accountNumber = "1234"
+
+        // when
+        bankService.getBank(accountNumber)
+
+        // then
+        verify { bankDataSource.retrieveBank(accountNumber) }
+
+    }
 }
